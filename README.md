@@ -10,12 +10,6 @@ Selection Sort: Diziyi sıralamak için her adımda en küçük (veya en büyük
 
 Insertion Sort: Diziyi sıralamak için her adımda bir öğeyi alır ve uygun konuma ekler.
 
-Merge Sort: Diziyi iki eşit parçaya böler, her parçayı sıralar ve ardından sıralı parçaları birleştirir.
-
-Quick Sort: Dizi üzerinde bir pivot seçer, pivotu kullanarak diziyi iki parçaya böler ve her parçayı ayrı ayrı sıralar.
-
-Heap Sort: Max heap veri yapısını kullanarak sıralama yapar.
-
 Kullanım
 Sağ üst köşede bulunan dört giriş kutusuna sıralanacak sayıları girin.
 "Choose Sorting Algorithm" menüsünden bir sıralama algoritması seçin.
