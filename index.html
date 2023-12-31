@@ -1,0 +1,182 @@
+<!-- index.html -->
+<html lang="tr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="styles.css">
+    <script src="AlgorithmType.js"></script>
+    <script>
+        function Main() {
+            var desc = document.getElementById("algorithmDesc");
+            var empty = new Boolean(false);
+            var numbers = new Array(4);
+            var img = document.getElementById("algorithmImg");
+            var table = document.getElementById("table");
+            table.style.visibility = "hidden";
+            desc.style.display = "none";
+            img.style.display = "none";
+            desc.textContent = "";
+            // save entered numbers into an array
+            for (var j = 1; j <= 4; j++) {
+                numbers[j] = parseInt(document.getElementById(`number${j}`).value);
+                if (isNaN(numbers[j])) {
+                    empty = true;
+                    break;
+                }
+            }
+            if (empty == true) {
+                empty = false;
+                desc.textContent = "Invalid Array";
+                desc.style.display = "block";
+                desc.style.color = "red";
+            }
+            else {
+                // Saving the type of algorithm entered
+                var algorithmType = document.getElementById("AlgorithmOption").value;
+
+                // Save the entered sorting order
+                var sortOrder = document.getElementById("SortOption").value;
+
+                if (algorithmType == "Invalid") {
+                    desc.textContent = "Invalid Sorting Algorithm";
+                    desc.style.display = "block";
+                    desc.style.color = "red";
+                }
+                else if (sortOrder == "Invalid") {
+                    desc.textContent = "Invalid Sorting Format";
+                    desc.style.display = "block";
+                    desc.style.color = "red";
+                }
+                else {
+                    desc.style.color = "black";
+                    // Redirect to Algorithm Type
+                    switch (algorithmType) {
+                        case "BubbleSort":
+                            var steps = bubbleSort(sortOrder, ...numbers);
+                            updateTable(steps);
+
+                            // desc and img about algorithm
+                            table.style.visibility = "visible";
+                            desc.textContent = "An example of bubble sort. Starting from the beginning of the list, compare every adjacent pair, swap their position if they are not in the right order (the latter one is smaller than the former one). After each iteration, one less element (the last one) is needed to be compared until there are no more elements left to be compared.";
+                            img.src = "https://media3.giphy.com/media/v1.Y2lkPTc5MGI3NjExOGg1cnN0anJwdmJzNXpnMTVydzVzOHMzM29oM2xjOWdmMWFtY2FiMyZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/RH0sORBfRrvDEW5NOK/giphy.gif";
+                            desc.style.display = "block";
+                            img.style.display = "block";
+                            break;
+
+                        case "SelectionSort":
+                            var steps = selectionSort(sortOrder, ...numbers);
+                            updateTable(steps);
+
+                            // desc and img about algorithm
+                            table.style.visibility = "visible";
+                            desc.textContent = "Selection sort is an effective and efficient sort algorithm based on comparison operations. It adds one element in each iteration. You need to select the smallest element in the array and move it to the beginning of the array by swapping with the front element.";
+                            img.src = "https://media1.giphy.com/media/v1.Y2lkPTc5MGI3NjExbmNtd3o1bTFjNnR5dTAzcTdsNXV5c3FxODhwcmdyM3JkMG04Y25vcSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/rHq1fXJJ9zsmccNXsP/giphy.gif";
+                            desc.style.display = "block";
+                            img.style.display = "block";
+                            break;
+
+                        case "InsertionSort":
+                            var steps = insertionSort(sortOrder, ...numbers);
+                            updateTable(steps);
+
+                            // desc and img about algorithm
+                            table.style.visibility = "visible";
+                            desc.textContent = "A graphical example of insertion sort. The partial sorted list (black) initially contains only the first element in the list. With each iteration one element (red) is removed from the \"not yet checked for order\" input data and inserted in-place into the sorted list.";
+                            img.src = "https://media3.giphy.com/media/v1.Y2lkPTc5MGI3NjExeG1xajJodzY0dHBpa2swcGY0dmNhMWFpaHkxM3ZwbmYyYnM1OWFmdyZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/QGu8BYLo2bTWddmG3b/giphy.gif";
+                            desc.style.display = "block";
+                            img.style.display = "block";
+                            break;
+
+                        default:
+                            break;
+                    }
+                }
+            }
+        }
+
+        // updateTable fonksiyonu
+        function updateTable(steps) {
+            var tableBody = document.getElementById("resultTable");
+            // Tabloyu temizle
+            tableBody.innerHTML = "";
+
+            // Her bir adım için tabloya bir satır ekleyin
+            steps.forEach(function (step) {
+                var row = tableBody.insertRow();
+
+                // Karşılaştırma sonucuna göre renk belirleme
+                var color = step.comparison.includes("swapped") ? "green" : "red";
+                // Adım sütunu
+                var stepCell = row.insertCell(0);
+                stepCell.textContent = step.step;
+                stepCell.style.color = "#265073"; // Renk uygula
+
+                // Karşılaştırma sütunu
+                var comparisonCell = row.insertCell(1);
+                comparisonCell.textContent = step.comparison;
+                comparisonCell.style.color = color; // Renk uygula
+
+                // Dizi sütunu
+                var arrayCell = row.insertCell(2);
+                arrayCell.textContent = step.array.slice(1).join(", ");
+                arrayCell.style.color = color; // Renk uygula
+            });
+        }
+    </script>
+</head>
+
+<body>
+
+    <div id="container">
+        <div class="contact-basic">
+            <footer>
+                <div class="social">
+                    <a href="https://github.com/ridvansagdic" target="_blank"><i class="fa fa-github"
+                            aria-hidden="true"></i></a>
+                </div>
+            </footer>
+        </div>
+        <h3>Sorting with Algorithms in JS</h3>
+
+        <div class="input-group">
+            <input id="number1" type="number">
+            <input id="number2" type="number">
+            <input id="number3" type="number">
+            <input id="number4" type="number">
+        </div>
+
+        <div id="siralamaSecenekleri">
+            <select id="AlgorithmOption">
+                <option value="Invalid" selected>Choose Sorting Algorithm</option>
+                <option value="BubbleSort">Bubble Sort</option>
+                <option value="SelectionSort">Selection Sort</option>
+                <option value="InsertionSort">Insertion Sort</option>
+            </select>
+            <select id="SortOption">
+                <option value="Invalid" selected>Choose Sorting Format</option>
+                <option value="ascending">from small to large</option>
+                <option value="descending">from large to small</option>
+            </select>
+        </div>
+        <button onclick="Main();">Sort Now</button>
+        <table id="table">
+            <thead>
+                <tr>
+                    <th>Step</th>
+                    <th>Comparison</th>
+                    <th>Array</th>
+                </tr>
+            </thead>
+            <tbody id="resultTable"></tbody>
+        </table>
+        <div class="algorithm-container">
+            <p id="algorithmDesc"></p>
+            <img id="algorithmImg">
+        </div>
+    </div>
+</body>
+
+</html>
