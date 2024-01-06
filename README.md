@@ -1,24 +1,26 @@
-Sorting Algorithms Visualizer
-Bu basit web uygulaması, çeşitli sıralama algoritmalarını görselleştirmek amacıyla oluşturulmuştur. Kullanıcı, dört adet sayıyı girebilir ve ardından çeşitli sıralama algoritmalarını seçip bu sayıların nasıl sıralandığını gözlemleyebilir.
+# Sorting Algorithms Visualizer
 
-Kullanılan Algoritmalar
-Uygulama şu sıralama algoritmalarını desteklemektedir:
+This simple web application is created to visualize various sorting algorithms. Users can enter four numbers and then choose different sorting algorithms to observe how these numbers are sorted.
 
-Bubble Sort: Her iki komşu öğeyi karşılaştırarak ve gerektiğinde yer değiştirerek sıralama yapar.
+## Used Algorithms
+The application supports the following sorting algorithms:
 
-Selection Sort: Diziyi sıralamak için her adımda en küçük (veya en büyük) öğeyi seçer ve uygun konuma yerleştirir.
+- **Bubble Sort:** Sorts the array by repeatedly stepping through the list, comparing each pair of adjacent elements, and swapping them if they are in the wrong order.
 
-Insertion Sort: Diziyi sıralamak için her adımda bir öğeyi alır ve uygun konuma ekler.
+- **Selection Sort:** Selects the smallest (or largest) element at each step and places it in its appropriate position to sort the array.
 
-Kullanım
-Sağ üst köşede bulunan dört giriş kutusuna sıralanacak sayıları girin.
-"Choose Sorting Algorithm" menüsünden bir sıralama algoritması seçin.
-"Choose Sorting Format" menüsünden sıralama düzenini seçin (küçükten büyüğe veya büyükten küçüğe).
-"Sort Now" düğmesine tıklayarak sıralama işlemini başlatın.
-Görselleştirme
-Her algoritmanın çalışma adımları, "Step", "Comparison" ve "Array" sütunlarını içeren bir tabloda gösterilir. Adımları izleyerek algoritmanın her aşamasını gözlemleyebilir ve sıralamanın nasıl gerçekleştiğini anlayabilirsiniz.
+- **Insertion Sort:** Takes one element at a time and places it in the correct position to sort the array.
 
-Katkıda Bulunma
-Bu proje açık kaynaklıdır ve GitHub'da burada bulunabilir. Katkıda bulunmak istiyorsanız, lütfen bir çekme isteği gönderin.
+## Usage
+1. Enter the numbers to be sorted into the four input boxes in the upper right corner.
+2. Choose a sorting algorithm from the "Choose Sorting Algorithm" menu.
+3. Select the sorting order (ascending or descending) from the "Choose Sorting Format" menu.
+4. Initiate the sorting process by clicking the "Sort Now" button.
 
-Uygulamayı keyifle kullanın!
+## Visualization
+The steps of each algorithm are displayed in a table with columns "Step," "Comparison," and "Array." By following the steps, you can observe each stage of the algorithm and understand how the sorting process unfolds.
+
+Enjoy using the application!
+
+</body>
+</html>
