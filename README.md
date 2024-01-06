@@ -19,5 +19,3 @@ The application supports the following sorting algorithms:
 
 ## Visualization
 The steps of each algorithm are displayed in a table with columns "Step," "Comparison," and "Array." By following the steps, you can observe each stage of the algorithm and understand how the sorting process unfolds.
-</body>
-</html>
